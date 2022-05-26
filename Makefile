@@ -7,6 +7,7 @@ RAILS_CONTAINER_ID=`docker ps | grep $(SERVICE) | awk '{print $$1}'`
 define DOCKER_RUN
 docker run \
 	--rm --name $(CONTAINER_NAME) \
+  -v `pwd`:/app:cached \
   -p 3003:3000 	$(IMG_NAME)/$(CONTAINER_NAME)
 endef
 export DOCKER_RUN

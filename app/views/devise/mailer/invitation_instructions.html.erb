@@ -1,11 +1,4 @@
-<p><%= t("devise.mailer.invitation_instructions.hello", email: @resource.email) %></p>
+<p>xxx</p>
+POST   /api/customers/auth/invitation(.:format) api/customers/invitations#create {:subdomain=>"local-customers-devel"}
 
-<p><%= t("devise.mailer.invitation_instructions.someone_invited_you", url: 'xx') %></p>
-
-<p><%= link_to t("devise.mailer.invitation_instructions.accept"), accept_invitation_url(@resource, :invitation_token => @token) %></p>
-
-<% if @resource.invitation_due_at %>
-  <p><%= t("devise.mailer.invitation_instructions.accept_until", due_date: l(@resource.invitation_due_at, format: :'devise.mailer.invitation_instructions.accept_until_format')) %></p>
-<% end %>
-
-<p><%= t("devise.mailer.invitation_instructions.ignore") %></p>
+POST   /users/invitation(.:format) users/invitations#create
