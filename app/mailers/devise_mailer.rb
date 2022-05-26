@@ -18,7 +18,7 @@ class DeviseMailer < Devise::Mailer
     #binding.pry
     #super
     super.merge!({template_path: '/hoge/keke'}) # <<動作する
-    # super.merge!({template_path: '/hoge/keke2'})
+    # super.merge!({template_path: '/hoge/keke2'}) # <<エラーになる
     # super.merge!({template_path: ["devise_mailer", "/hoge/keke"] })
     
   end
