@@ -7,7 +7,7 @@ default: &default
   public_output_path: packs
   cache_path: tmp/cache/webpacker
   check_yarn_integrity: false
-  webpack_compile_output: true
+  webpack_compile_output: false
 
   # Additional paths webpack should lookup modules
   # ['app/assets', 'engine/foo/app/assets']
@@ -34,6 +34,7 @@ default: &default
     - .woff2
 
   extensions:
+    - .vue
     - .mjs
     - .js
     - .sass
@@ -50,7 +51,7 @@ default: &default
 
 development:
   <<: *default
-  compile: true
+  compile: false
 
   # Verifies that correct packages and versions are installed by inspecting package.json, yarn.lock, and node_modules
   check_yarn_integrity: true
@@ -60,8 +61,8 @@ development:
     https: false
     host: localhost
     port: 3035
-    public: localhost:3035
-    hmr: false
+    public: localhost:3033
+    hmr: true
     # Inline should be set to true if using HMR
     inline: true
     overlay: true
@@ -69,7 +70,6 @@ development:
     disable_host_check: true
     use_local_ip: false
     quiet: false
-    pretty: false
     headers:
       'Access-Control-Allow-Origin': '*'
     watch_options:
@@ -83,6 +83,15 @@ test:
   # Compile test packs to a separate directory
   public_output_path: packs-test
 
+staging:
+  <<: *default
+
+  # Production depends on precompilation of packs prior to booting for performance.
+  compile: false
+
+  # Cache manifest.json for performance
+  cache_manifest: true
+  
 production:
   <<: *default
 
@@ -90,7 +99,7 @@ production:
   compile: false
 
   # Extract and emit a css file
-  extract_css: true
+  extract_css: false
 
   # Cache manifest.json for performance
   cache_manifest: true
