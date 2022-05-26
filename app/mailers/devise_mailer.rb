@@ -17,8 +17,8 @@ class DeviseMailer < Devise::Mailer
   def headers_for(action, opts)
     #binding.pry
     #super
-    # super.merge!({template_path: '/hoge/keke'}) # <<動作する
-    super.merge!({template_path: '/hoge/keke2'})
+    super.merge!({template_path: '/hoge/keke'}) # <<動作する
+    # super.merge!({template_path: '/hoge/keke2'})
     # super.merge!({template_path: ["devise_mailer", "/hoge/keke"] })
     
   end
